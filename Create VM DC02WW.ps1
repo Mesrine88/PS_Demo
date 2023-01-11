@@ -13,7 +13,8 @@ $VHD4Path = "D:\VM\DC02WW\Virtual Harddisk\DC02WWHDD003.vhdx"
 $IsoPath = "D:\Daten\Isos\Server 2022\WIN_SERVER_2022_EVAL_x64FRE_de-de.iso"
 
 # VM erstellen
-New-VM -Name $VMName -ComputerName $ComputerName -MemoryStartupBytes $RAM -MaxMemoryStartupBytes $RAM -Path $StoragePath -NewVHDPath $VHDPath -NewVHDSizeBytes $VHDXSize -dynamic -SwitchName $NetworkSwitch
+New-VM -Name $VMName -MemoryStartupBytes $RAM -MaxMemoryStartupBytes $RAM -Path $StoragePath -NewVHDPath $VHDPath -NewVHDSizeBytes $VHDXSize -dynamic -SwitchName $NetworkSwitch
+Set-VM -Name $VMName -DynamicMemory -MemoryMaximumBytes 4GB
 
 # VM-Einstellungen festlegen
 Set-VM -Name $VMName -AutomaticStartAction Nothing -AutomaticStopAction TurnOff
